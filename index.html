@@ -9,19 +9,26 @@
 <body>
     <div class="main">
         <div class="flag">
-            <div id="sign"><input type="text" sign></div>
-            <div id="zero"><input type="text" zero></div>
-            <div id="auxiliary"><input type="text" auxiliary></div>
-            <div id="parity"><input type="text" parity></div>
-            <div id="carry"><input type="text" carry></div>
+            <p>S</p><div id="sign"><p id="sign"></p></div>
+            <p>Z</p><div id="zero"><p id="zero"></p></div>
+            <p>A</p><div id="auxiliary"><p id="auxiliary"></p></div>
+            <p>P</p><div id="parity"><p id="parity"></p></div>
+            <p>C</p><div id="carry"><p id="carry"></p></div>
+        </div>
+
+        <div class="registers">
+            <span><p>A:</p><div><p id="AR"></p></div></span>
+            <span><p>B:</p><div><p id="BR"></p></div><p>C:</p><div><p id="CR"></p></div></span>
+            <span><p>D:</p><div><p id="DR"></p></div><p>E:</p><div><p id="ER"></p></div></span>
+            <span><p>H:</p><div><p id="HR"></p></div><p>L:</p><div><p id="LR"></p></div></span>
         </div>
 
         <div class="screen">
             <div class="left">
-                <input type="text">
+                <p id="left"></p>
             </div>
             <div class="right">
-                <input type="text">
+                <p id="right"></p>
             </div>
         </div>
 
