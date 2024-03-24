@@ -2,6 +2,9 @@ var modal=document.getElementById("aboutModal");
 var btn=document.getElementById("aboutButton");
 var span=document.getElementsByClassName("close")[0];
 
+// let idx=document.querySelector('#idx');
+// let opcode=document.querySelector('#opcode');
+let store=document.querySelector('.store');
 btn.onclick = function() {
     modal.style.display = "block";
 }
@@ -128,6 +131,20 @@ function handleButtonClick(event) {
         let rightScreenInput = document.querySelector('.screen .right p');
         let buttonText = event.target.textContent;
 
+        let existing=document.getElementById(`store-${num}`);
+        let p=document.createElement('p');
+        let wrapper=document.createElement('div');
+        wrapper.classList.add('paragraph-wrapper');
+        p.textContent=`${num} : ${memory[num]}`;
+        p.id=`store-${num}`;
+        if(existing){
+            existing.textContent=p.textContent;
+        }
+        else{
+            wrapper.appendChild(p);
+            store.appendChild(wrapper);
+        }
+
         hasNext = true;
         if(first)num+=1;
         rightScreenInput.innerHTML=memory[num] || '00';
@@ -183,7 +200,7 @@ function execute(address){
     while(true){
         let memo=find[memory[address]];
         memo=memo.split(' ');
-        if(memo[0]=='HLT')break;
+        if(memo[0]=='HLT'){update('E000');break;}
         else if(memo[0]=='ADD'){instructions.ADD(memo[1]);address++;}
         else if(memo[0]=='MADD'){instructions.MADD(registers["H"]+registers["L"]);address++;}
         else if(memo[0]=='ADC'){instructions.ADC(memo[1]);address++;}
@@ -234,6 +251,7 @@ function execute(address){
         else if(memo[0]=='CMA'){instructions.CMA();address++;}
         else if(memo[0]=='CMC'){instructions.CMC();address++;}
         else if(memo[0]=='STC'){instructions.STC();address++;}
+        else {update('Err');break;}
         updateflags();
         updateRegisters();
     }

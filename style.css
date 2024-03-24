@@ -96,7 +96,29 @@ body{
 }
 
 .registers {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-start;
     margin-bottom: 20px;
+}
+
+.registers .store{
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 180px;
+    margin-right: 10px;
+    background-color: #f0f0f0;
+}
+
+#another{
+    width: 250px;
+    height: 180px;
+}
+.paragraph-wrapper {
+    margin: 7px 7px; /* Add margin bottom to create space between paragraphs */
 }
 
 .registers span {
@@ -115,8 +137,9 @@ body{
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-.registers div {
+.registers div{
     display: inline-block;
+    /* flex-direction: column; */
     margin-left: 5px;
 }
 
